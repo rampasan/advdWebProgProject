@@ -3,7 +3,11 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use PhpParser\Node\Expr\Cast\Bool_;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,11 +18,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+         User::factory(30)->create([
+             'password' => Hash::make('password'),
+             'is_admin' => false,
+             'is_approved' => true,
+         ]);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+//         User::factory()->create([
+//             'name' => 'Muhammad Sufyian Bin Mohd Azmi, Ts.',
+//             'email' => 'sufyian@uniten.edu.my',
+//             'password' => Hash::make('password'),
+//             'is_admin' => true,
+//             'is_approved' => true,
+//         ]);
     }
 }
