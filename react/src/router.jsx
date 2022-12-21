@@ -12,6 +12,9 @@ import UserForm from "./views/UserForm";
 import Students from "./views/Students";
 import Projects from "./views/Projects";
 import StudentForm from "./views/StudentForm";
+import ProjectForm from "./views/ProjectForm";
+import SuperviseeForm from "./views/SuperviseeForm";
+import ExamineeForm from "./views/ExamineeForm";
 
 const router = createBrowserRouter(
     [
@@ -62,6 +65,22 @@ const router = createBrowserRouter(
                 {
                     path: '/students/new',
                     element: <StudentForm key='studentCreate' />
+                },
+                {
+                    path: '/projects/new',
+                    element: <ProjectForm key='projectCreate'/>
+                },
+                {
+                    path: '/projects/:id',
+                    element: <ProjectForm key='projectUpdate' />
+                },
+                {
+                    path: '/supervisees/:id',
+                    element: <SuperviseeForm/>
+                },
+                {
+                    path: '/examinees/:id',
+                    element: <ExamineeForm/>
                 }
             ]
         },

@@ -22,10 +22,27 @@ class ProjectResource extends JsonResource
             'supervisor_id' => $this->supervisor_id,
             'examiner1_id' => $this->examiner1_id,
             'examiner2_id' => $this->examiner2_id,
-            'start_date' => $this->start_date->format('Y-m-d'),
-            'end_date' => $this->end_date->format('Y-m-d'),
-            'duration' => $this->duration,
-            'status' => $this->status,
+            'start_date' => $this->start_date ?? '',
+            'end_date' => $this->end_date ?? '',
+            'duration' => $this->duration ?? '',
+            'status' => $this->status ?? '',
+            'projectStudent' => [
+                'student_id' => $this->projectStudent->student_id,
+                'name' => $this->projectStudent->name,
+                'course' => $this->projectStudent->course,
+            ],
+            'projectSupervisor' => [
+                'id' => $this->projectSupervisor->id,
+                'name' => $this->projectSupervisor->name,
+            ],
+            'projectExaminer1' => [
+                'id' => $this->projectExaminer1->id,
+                'name' => $this->projectExaminer1->name,
+            ],
+            'projectExaminer2' => [
+                'id' => $this->projectExaminer2->id,
+                'name' => $this->projectExaminer2->name,
+            ],
         ];
     }
 }

@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
 //            'course' => 'Software Engineering',
 //        ]);
 
+
 //         User::factory()->create([
 //             'name' => 'Muhammad Sufyian Bin Mohd Azmi, Ts.',
 //             'email' => 'sufyian@uniten.edu.my',

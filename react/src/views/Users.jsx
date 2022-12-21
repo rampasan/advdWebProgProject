@@ -3,11 +3,13 @@ import axiosClient from "../axios-client.js";
 import {Link} from "react-router-dom";
 import {EllipsisVerticalIcon} from "@heroicons/react/24/solid";
 import {Menu, Transition} from "@headlessui/react";
+import {useStateContext} from "../context/ContextProvider.jsx";
 
 export default function Users(){
     const [users, setUsers] = useState([]);
     const [paginate, setPaginate] = useState(1);
     const [loading, setLoading] = useState(false);
+    const {setNotification} = useStateContext();
 
     useEffect(() => {
         getUsers();
@@ -38,7 +40,7 @@ export default function Users(){
         }
         axiosClient.delete(`/users/${user.id}`)
             .then(() => {
-                //TODO Notification
+                setNotification("User has been successfully deleted");
                 getUsers();
             })
     }

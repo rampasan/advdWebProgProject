@@ -3,11 +3,13 @@ import axiosClient from "../axios-client.js";
 import {Link} from "react-router-dom";
 import {Menu, Transition} from "@headlessui/react";
 import {EllipsisVerticalIcon} from "@heroicons/react/24/solid/index.js";
+import {useStateContext} from "../context/ContextProvider.jsx";
 
 export default function Students(){
     const [students, setStudents] = useState([]);
     const [paginate, setPaginate] = useState(1);
     const [loading, setLoading] = useState(false);
+    const {setNotification} = useStateContext();
 
     useEffect(() => {
         getStudents();
@@ -36,7 +38,7 @@ export default function Students(){
         }
         axiosClient.delete(`/students/${student.id}`)
             .then(() => {
-                //TODO Notification
+                setNotification("Student has been successfully deleted");
                 getStudents();
             })
     }
@@ -63,7 +65,7 @@ export default function Students(){
                                     {loading && (
                                         <tbody>
                                         <tr className='bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100'>
-                                            <td colSpan='6' className='text-sm font-bold text-gray-900 px-6 py-4 text-center'>Loading...</td>
+                                            <td colSpan='4' className='text-sm font-bold text-gray-900 px-6 py-4 text-center'>Loading...</td>
                                         </tr>
                                         </tbody>
                                     )}

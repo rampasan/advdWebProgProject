@@ -1,7 +1,12 @@
 <?php
 
+use App\Http\Controllers\Api\AllStudentController;
+use App\Http\Controllers\Api\AllUserController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ExaminerController;
+use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\StudentController;
+use App\Http\Controllers\Api\SupervisorController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +29,11 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::post('logout', [AuthController::class, 'logout']);
     Route::apiResource('/users', UserController::class);
     Route::apiResource('/students', StudentController::class);
+    Route::apiResource('/projects', ProjectController::class);
+    Route::apiResource('/allusers', AllUserController::class);
+    Route::apiResource('/allstudents', AllStudentController::class);
+    Route::get('/supervisor', [SupervisorController::class, 'index']);
+    Route::get('/examiner', [ExaminerController::class, 'index']);
 });
 
 

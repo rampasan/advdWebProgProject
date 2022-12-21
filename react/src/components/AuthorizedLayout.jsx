@@ -101,7 +101,7 @@ export default function AuthorizedLayout(){
                         </nav>
                         {/* Navigation ends */}
                         {notification && (
-                            <div className=' w-64 rounded-md p-3 m-3 bg-green-500 text-white'>
+                            <div className=' w-72 rounded-md p-3 m-3 bg-green-500 text-white'>
                                 {notification}
                             </div>
                         )}

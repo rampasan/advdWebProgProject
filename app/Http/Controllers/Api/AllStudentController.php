@@ -7,19 +7,18 @@ use App\Http\Resources\StudentResource;
 use App\Models\Student;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
-class StudentController extends Controller
+class AllStudentController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return AnonymousResourceCollection
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index()
     {
         return StudentResource::collection(
-            Student::query()->orderBy('id', 'desc')->paginate(5)
+            Student::all()
         );
     }
 
@@ -31,20 +30,18 @@ class StudentController extends Controller
      */
     public function store(StoreStudentRequest $request)
     {
-        $data = $request->validated();
-        $student = Student::create($data);
-        return response(new StudentResource($student), 201);
+        //
     }
 
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\Student  $student
-     * @return StudentResource
+     * @return \Illuminate\Http\Response
      */
     public function show(Student $student)
     {
-        return new StudentResource($student);
+        //
     }
 
     /**
@@ -52,13 +49,11 @@ class StudentController extends Controller
      *
      * @param  \App\Http\Requests\UpdateStudentRequest  $request
      * @param  \App\Models\Student  $student
-     * @return StudentResource
+     * @return \Illuminate\Http\Response
      */
     public function update(UpdateStudentRequest $request, Student $student)
     {
-        $data = $request->validated();
-        $student->update($data);
-        return new StudentResource($student);
+        //
     }
 
     /**
@@ -69,7 +64,6 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        $student->delete();
-        return response("", 204);
+        //
     }
 }
