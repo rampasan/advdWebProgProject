@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Student;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -18,11 +19,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         User::factory(30)->create([
-             'password' => Hash::make('password'),
-             'is_admin' => false,
-             'is_approved' => true,
-         ]);
+//         User::factory(30)->create([
+//             'password' => Hash::make('password'),
+//             'is_admin' => false,
+//             'is_approved' => true,
+//         ]);
+
+//        Student::factory(60)->create([
+//            'course' => 'Software Engineering',
+//        ]);
 
 //         User::factory()->create([
 //             'name' => 'Muhammad Sufyian Bin Mohd Azmi, Ts.',

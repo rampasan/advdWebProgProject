@@ -9,6 +9,9 @@ import Examinees from "./views/Examinees";
 import Supervisees from "./views/Supervisees";
 import Users from "./views/Users";
 import UserForm from "./views/UserForm";
+import Students from "./views/Students";
+import Projects from "./views/Projects";
+import StudentForm from "./views/StudentForm";
 
 const router = createBrowserRouter(
     [
@@ -18,7 +21,7 @@ const router = createBrowserRouter(
             children: [
                 {
                     path: '/',
-                    element: <Navigate to='/dashboard' />
+                    element: <Navigate to='/supervisees' />
                 },
                 {
                     path: '/dashboard',
@@ -44,6 +47,22 @@ const router = createBrowserRouter(
                     path: '/users/:id',
                     element: <UserForm key='userUpdate'/>
                 },
+                {
+                    path: '/students',
+                    element: <Students/>
+                },
+                {
+                    path: '/projects',
+                    element: <Projects/>
+                },
+                {
+                    path: '/students/:id',
+                    element: <StudentForm key='studentUpdate'/>
+                },
+                {
+                    path: '/students/new',
+                    element: <StudentForm key='studentCreate' />
+                }
             ]
         },
         {
