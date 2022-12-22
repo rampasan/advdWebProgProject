@@ -10,7 +10,6 @@ export default function UserForm() {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [errors, setErrors] = useState(null);
-    const [enabled, setEnabled] = useState(false);
     const [user, setUser] = useState({
         id: null,
         name: '',
@@ -64,12 +63,12 @@ export default function UserForm() {
         }
     }
     return (
-        <div className='block p-6 rounded-lg shadow-lg bg-white max-w-sm'>
+        <div className='block p-6 rounded-lg shadow-lg bg-white max-w-lg'>
             {user.id && (
-                <h1 className='text-xl font-bold'>Update User: {user.name}</h1>
+                <h1 className='text-xl font-bold mx-2'>Update User: {user.name}</h1>
             )}
             {!user.id && (
-                <h1 className='text-xl font-bold'>New User</h1>
+                <h1 className='text-xl font-bold mx-2'>New User</h1>
             )}
             <div>
                 {loading && (
@@ -86,11 +85,11 @@ export default function UserForm() {
                 )}
                 {!loading && (
                     <form onSubmit={onSubmit}>
-                        <input type='text' onChange={ev => setUser({...user, name: ev.target.value})} value={user.name} placeholder="Name"/>
-                        <input type='email' onChange={ev => setUser({...user, email: ev.target.value})} value={user.email} placeholder="Email"/>
-                        <input type='password' onChange={ev => setUser({...user, password: ev.target.value})} placeholder="Password"/>
-                        <input type='password' onChange={ev => setUser({...user, password_confirmation: ev.target.value})} placeholder="Confirm Password"/>
-                        <div className='flex item-center justify-between'>
+                        <input className='block rounded-md p-2 mx-2 my-2 w-80' type='text' onChange={ev => setUser({...user, name: ev.target.value})} value={user.name} placeholder="Name"/>
+                        <input className='block rounded-md p-2 mx-2 my-2 w-80' type='email' onChange={ev => setUser({...user, email: ev.target.value})} value={user.email} placeholder="Email"/>
+                        <input className='block rounded-md p-2 mx-2 my-2 w-80' type='password' onChange={ev => setUser({...user, password: ev.target.value})} placeholder="Password"/>
+                        <input className='block rounded-md p-2 mx-2 my-2 w-80' type='password' onChange={ev => setUser({...user, password_confirmation: ev.target.value})} placeholder="Confirm Password"/>
+                        <div className='flex item-center justify-between my-2'>
                             <h1>Approved</h1>
                             <Switch
                                 checked={user.is_approved}

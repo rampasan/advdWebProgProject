@@ -1,9 +1,7 @@
 import {useNavigate, useParams} from "react-router-dom";
 import {useStateContext} from "../context/ContextProvider.jsx";
-import {Fragment, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import axiosClient from "../axios-client.js";
-import {Combobox, Transition} from "@headlessui/react";
-import {CheckIcon, ChevronDownIcon} from "@heroicons/react/24/solid";
 
 export default function ProjectForm() {
     const {id} = useParams();
@@ -98,12 +96,12 @@ export default function ProjectForm() {
         }
     }
     return (
-        <div className='block p-6 rounded-lg shadow-lg bg-white max-w-sm'>
+        <div className='block p-6 rounded-lg shadow-lg bg-white max-w-lg'>
             {project.id && (
                 <h1 className='text-xl font-bold'>Update Project: {project.title}</h1>
             )}
             {!project.id && (
-                <h1 className='text-xl font-bold'>New User</h1>
+                <h1 className='text-xl font-bold'>New Project</h1>
             )}
             <div>
                 {loading && (
@@ -120,12 +118,12 @@ export default function ProjectForm() {
                 )}
                 {!loading && (
                     <form onSubmit={onSubmit}>
-                        <input type='text' onChange={ev => setProject({...project, title: ev.target.value})}
+                        <input className='block rounded-md p-2 mx-2 my-2 w-80' type='text' onChange={ev => setProject({...project, title: ev.target.value})}
                                value={project.title} placeholder="Project Title"/>
                         <br/>
-                        <div>
+                        <div className='flex items-center justify-between my-2'>
                             <label htmlFor='student'>Student name</label>
-                            <select name='student' onChange={(ev) => setProject({...project, student_id: ev.target.value})}>
+                            <select className='block rounded-md p-2 mx-2 w-80' name='student' onChange={(ev) => setProject({...project, student_id: ev.target.value})}>
                                 {project.id ? (
                                     students.map((student) => (
                                         project.student_id === student.student_id ? (
@@ -141,9 +139,9 @@ export default function ProjectForm() {
                                 )}
                             </select>
                         </div>
-                        <div>
+                        <div className='flex items-center justify-between my-2'>
                             <label htmlFor='supervisor'>Supervisor</label>
-                            <select name='supervisor' onChange={(ev) => setProject({...project, supervisor_id: ev.target.value})}>
+                            <select className='block rounded-md p-2 mx-2 w-80' name='supervisor' onChange={(ev) => setProject({...project, supervisor_id: ev.target.value})}>
                                 {project.id ? (
                                     users.map((user) => (
                                         project.supervisor_id === user.id ? (
@@ -159,9 +157,9 @@ export default function ProjectForm() {
                                 )}
                             </select>
                         </div>
-                        <div>
+                        <div className='flex items-center justify-between my-2'>
                             <label htmlFor='examiner1'>Examiner 1</label>
-                            <select name='examiner1' onChange={(ev) => setProject({...project, examiner1_id: ev.target.value})}>
+                            <select className='block rounded-md p-2 mx-2 w-80' name='examiner1' onChange={(ev) => setProject({...project, examiner1_id: ev.target.value})}>
                                 {project.id ? (
                                     users.map((user) => (
                                         project.examiner1_id === user.id ? (
@@ -177,9 +175,9 @@ export default function ProjectForm() {
                                 )}
                             </select>
                         </div>
-                        <div>
+                        <div className='flex items-center justify-between my-2'>
                             <label htmlFor='examiner2'>Examiner 2</label>
-                            <select name='examiner2' onChange={(ev) => setProject({...project, examiner2_id: ev.target.value})}>
+                            <select className='block rounded-md p-2 mx-2 w-80' name='examiner2' onChange={(ev) => setProject({...project, examiner2_id: ev.target.value})}>
                                 {project.id ? (
                                     users.map((user) => (
                                         project.examiner2_id === user.id ? (

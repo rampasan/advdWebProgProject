@@ -60,12 +60,12 @@ export default function StudentForm(){
         }
     }
     return (
-        <div className='block p-6 rounded-lg shadow-lg bg-white max-w-sm'>
+        <div className='block p-6 rounded-lg shadow-lg bg-white max-w-lg'>
             {student.id && (
-                <h1 className='text-xl font-bold'>Update Student: {student.name}</h1>
+                <h1 className='text-xl font-bold mx-2'>Update Student: {student.name}</h1>
             )}
             {!student.id && (
-                <h1 className='text-xl font-bold'>New User</h1>
+                <h1 className='text-xl font-bold mx-2'>New Student</h1>
             )}
             <div>
                 {loading && (
@@ -82,9 +82,9 @@ export default function StudentForm(){
                 )}
                 {!loading && (
                     <form onSubmit={onSubmit}>
-                        <input type='text' onChange={ev => setStudent({...student, student_id: ev.target.value})} value={student.student_id} placeholder="Student ID"/>
-                        <input type='text' onChange={ev => setStudent({...student, name: ev.target.value})} value={student.name} placeholder="Name"/>
-                        <input type='text' onChange={ev => setStudent({...student, course: ev.target.value})} value={student.course} placeholder="Course"/>
+                        <input className='block rounded-md p-2 mx-2 my-2 w-80' type='text' onChange={ev => setStudent({...student, student_id: ev.target.value})} value={student.student_id} placeholder="Student ID"/>
+                        <input className='block rounded-md p-2 mx-2 my-2 w-80' type='text' onChange={ev => setStudent({...student, name: ev.target.value})} value={student.name} placeholder="Name"/>
+                        <input className='block rounded-md p-2 mx-2 my-2 w-80' type='text' onChange={ev => setStudent({...student, course: ev.target.value})} value={student.course} placeholder="Course"/>
                         <button className='w-full bg-blue-500 hover:bg-blue-700 text-white text-center rounded-md p-2 m-2'>Save</button>
                     </form>
                 )}

@@ -60,8 +60,7 @@ export default function SuperviseeForm() {
     const onSubmit = (ev) => {
         ev.preventDefault();
         console.log(project)
-        debugger;
-        axiosClient.put(`/projects/${project.id}`, project)
+        axiosClient.put(`/supervisor/${project.id}`, project)
             .then(() => {
                 console.log(project);
                 setNotification("Project has been updated");
@@ -76,14 +75,14 @@ export default function SuperviseeForm() {
 
     }
     return (
-        <div className='block p-6 rounded-lg shadow-lg bg-white max-w-sm'>
+        <div className='block p-6 rounded-lg shadow-lg bg-white max-w-lg'>
             {project.id && (
-                <h1 className='text-xl font-bold'>Update Project: {project.title}</h1>
+                <h1 className='text-xl font-bold mx-2'>Update Project: {project.title}</h1>
             )}
             {!project.id && (
                 <h1 className='text-xl font-bold'>New User</h1>
             )}
-            <div>
+            <div className='items-center'>
                 {loading && (
                     <div className='items-center'>
                         Loading...
@@ -98,13 +97,16 @@ export default function SuperviseeForm() {
                 )}
                 {!loading && (
                     <form onSubmit={onSubmit}>
-                        <input disabled type='text' onChange={ev => setProject({...project, title: ev.target.value})}
+                        <input className='rounded-md p-2 bg-gray-100 my-2 w-full' disabled type='text' onChange={ev => setProject({...project, title: ev.target.value})}
                                value={project.title} placeholder="Project Title"/>
                         <br/>
-                        <div>
+                        <div className='flex items-center justify-between my-2'>
                             <label htmlFor='student'>Student name</label>
-                            <select disabled name='student'
-                                    onChange={(ev) => setProject({...project, student_id: ev.target.value})}>
+                            <select
+                                disabled name='student'
+                                onChange={(ev) => setProject({...project, student_id: ev.target.value})}
+                                className='rounded-md p-2 bg-gray-100 mx-2 w-80'
+                            >
                                 {project.id ? (
                                     students.map((student) => (
                                         project.student_id === student.student_id ? (
@@ -120,10 +122,13 @@ export default function SuperviseeForm() {
                                 )}
                             </select>
                         </div>
-                        <div>
+                        <div className='flex items-center justify-between my-2'>
                             <label htmlFor='supervisor'>Supervisor</label>
-                            <select disabled name='supervisor'
-                                    onChange={(ev) => setProject({...project, supervisor_id: ev.target.value})}>
+                            <select
+                                disabled name='supervisor'
+                                onChange={(ev) => setProject({...project, supervisor_id: ev.target.value})}
+                                className='rounded-md p-2 bg-gray-100 mx-2 w-80'
+                            >
                                 {project.id ? (
                                     users.map((user) => (
                                         project.supervisor_id === user.id ? (
@@ -139,10 +144,13 @@ export default function SuperviseeForm() {
                                 )}
                             </select>
                         </div>
-                        <div>
+                        <div className='flex items-center justify-between my-2'>
                             <label htmlFor='examiner1'>Examiner 1</label>
-                            <select disabled name='examiner1'
-                                    onChange={(ev) => setProject({...project, examiner1_id: ev.target.value})}>
+                            <select
+                                disabled name='examiner1'
+                                onChange={(ev) => setProject({...project, examiner1_id: ev.target.value})}
+                                className='rounded-md p-2 bg-gray-100 mx-2 w-80'
+                            >
                                 {project.id ? (
                                     users.map((user) => (
                                         project.examiner1_id === user.id ? (
@@ -158,10 +166,13 @@ export default function SuperviseeForm() {
                                 )}
                             </select>
                         </div>
-                        <div>
+                        <div className='flex items-center justify-between my-2'>
                             <label htmlFor='examiner2'>Examiner 2</label>
-                            <select disabled name='examiner2'
-                                    onChange={(ev) => setProject({...project, examiner2_id: ev.target.value})}>
+                            <select
+                                disabled name='examiner2'
+                                onChange={(ev) => setProject({...project, examiner2_id: ev.target.value})}
+                                className='rounded-md p-2 bg-gray-100 mx-2 w-80'
+                            >
                                 {project.id ? (
                                     users.map((user) => (
                                         project.examiner2_id === user.id ? (
@@ -177,17 +188,17 @@ export default function SuperviseeForm() {
                                 )}
                             </select>
                         </div>
-                        <div>
+                        <div className='flex items-center justify-between my-2'>
                             <label htmlFor='start_date'>Start Date</label>
-                            <input name='start_date' type='date' onChange={(ev) => setProject({...project, start_date: ev.target.value})}/>
+                            <input className='rounded-md p-2 mx-2 w-80' name='start_date' type='date' onChange={(ev) => setProject({...project, start_date: ev.target.value})}/>
                         </div>
-                        <div>
+                        <div className='flex items-center justify-between my-2'>
                             <label htmlFor='end_date'>Start Date</label>
-                            <input name='end_date' type='date' onChange={(ev) => setProject({...project, end_date: ev.target.value})}/>
+                            <input className='rounded-md p-2 mx-2 w-80' name='end_date' type='date' onChange={(ev) => setProject({...project, end_date: ev.target.value})}/>
                         </div>
-                        <div>
+                        <div className='flex items-center justify-between my-2'>
                             <label htmlFor='duration'>Duration</label>
-                            <select name='duration' onChange={(ev) => setProject({...project, duration: ev.target.value})}>
+                            <select className='rounded-md p-2 mx-2 w-80' name='duration' onChange={(ev) => setProject({...project, duration: ev.target.value})}>
                                 <option value="0 Months">0 Months</option>
                                 <option value="1 Months">1 Months</option>
                                 <option value="2 Months">2 Months</option>
@@ -197,9 +208,9 @@ export default function SuperviseeForm() {
                                 <option value="6 Months">6 Months</option>
                             </select>
                         </div>
-                        <div>
+                        <div className='flex items-center justify-between my-2'>
                             <label htmlFor='status'>Status</label>
-                            <select name='status' onChange={(ev) => setProject({...project, status: ev.target.value})}>
+                            <select className='rounded-md p-2 mx-2 w-80' name='status' onChange={(ev) => setProject({...project, status: ev.target.value})}>
                                 <option value='On track'>On track</option>
                                 <option value='Delayed'>Delayed</option>
                                 <option value='Extended'>Extended</option>

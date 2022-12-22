@@ -34,6 +34,7 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::apiResource('/allstudents', AllStudentController::class);
     Route::get('/supervisor', [SupervisorController::class, 'index']);
     Route::get('/examiner', [ExaminerController::class, 'index']);
+    Route::put('/supervisor/{id}', [SupervisorController::class, 'update']);
 });
 
 

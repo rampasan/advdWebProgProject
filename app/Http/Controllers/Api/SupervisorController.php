@@ -70,9 +70,15 @@ class SupervisorController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update(Request $request, $id)
     {
-        //
+        $student = Project::find($id);
+        $student->start_date = $request->input('start_date');
+        $student->end_date = $request->input('end_date');
+        $student->duration = $request->input('duration');
+        $student->status = $request->input('status');
+        $student->update();
+        return response("Updated Successfully", 201);
     }
 
     /**
