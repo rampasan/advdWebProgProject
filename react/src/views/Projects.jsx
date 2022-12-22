@@ -9,7 +9,7 @@ export default function Projects(){
     const [projects, setProjects] = useState([]);
     const [paginate, setPaginate] = useState(1);
     const [loading, setLoading] = useState(false);
-    const {setNotification} = useStateContext();
+    const {user} = useStateContext();
 
     useEffect(() => {
         getProjects();
@@ -40,7 +40,9 @@ export default function Projects(){
             <div>
                 <div className='flex items-center justify-between mb-5'>
                     <h1 className='font-bold text-xl'>Projects</h1>
-                    <Link to='/projects/new' className='rounded-md text-white bg-blue-500 hover:bg-blue-700 p-3'>Add New Project</Link>
+                    {user.is_admin === 1 && (
+                        <Link to='/projects/new' className='rounded-md text-white bg-blue-500 hover:bg-blue-700 p-3'>Add New Project</Link>
+                    )}
                 </div>
                 <div className='flex flex-col'>
                     <div className='sm:-mx-6 lg:-mx-8'>
@@ -102,7 +104,7 @@ export default function Projects(){
                                                                     </Menu.Item>
                                                                     <Menu.Item>
                                                                         {({active}) => (
-                                                                            <button onClick={ev => toDelete(project)} className={classNames(active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm w-full text-left')}>
+                                                                            <button onClick={() => toDelete(project)} className={classNames(active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm w-full text-left')}>
                                                                                 Delete
                                                                             </button>
                                                                         )}

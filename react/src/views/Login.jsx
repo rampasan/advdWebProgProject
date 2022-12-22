@@ -2,6 +2,7 @@ import {LockClosedIcon} from "@heroicons/react/20/solid";
 import {createRef, useState} from "react";
 import {useStateContext} from "../context/ContextProvider.jsx";
 import axiosClient from "../axios-client.js";
+import {Link} from "react-router-dom";
 
 export default function Login() {
     const emailRef = createRef();
@@ -68,6 +69,10 @@ export default function Login() {
                                     placeholder="Password"
                                 />
                             </div>
+                        </div>
+                        <div className='flex justify-end items-center'>
+                            <p className='text-sm mx-2'>Don't have an account?</p>
+                            <Link to='/signup' className='text-sm font-bold text-blue-500 hover:text-blue-800' >Sign Up</Link>
                         </div>
                         <div>
                             <button
