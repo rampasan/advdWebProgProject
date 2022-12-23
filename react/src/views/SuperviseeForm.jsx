@@ -190,11 +190,19 @@ export default function SuperviseeForm() {
                         </div>
                         <div className='flex items-center justify-between my-2'>
                             <label htmlFor='start_date'>Start Date</label>
-                            <input className='rounded-md p-2 mx-2 w-80' name='start_date' type='date' onChange={(ev) => setProject({...project, start_date: ev.target.value})}/>
+                            {project.start_date ? (
+                                <input value={project.start_date} className='rounded-md p-2 mx-2 w-80' name='start_date' type='date' onChange={(ev) => setProject({...project, start_date: ev.target.value})}/>
+                            ) : (
+                                <input className='rounded-md p-2 mx-2 w-80' name='start_date' type='date' onChange={(ev) => setProject({...project, start_date: ev.target.value})}/>
+                            )}
                         </div>
                         <div className='flex items-center justify-between my-2'>
-                            <label htmlFor='end_date'>Start Date</label>
-                            <input className='rounded-md p-2 mx-2 w-80' name='end_date' type='date' onChange={(ev) => setProject({...project, end_date: ev.target.value})}/>
+                            <label htmlFor='end_date'>End Date</label>
+                            {project.end_date ? (
+                                <input value={project.end_date} className='rounded-md p-2 mx-2 w-80' name='end_date' type='date' onChange={(ev) => setProject({...project, end_date: ev.target.value})}/>
+                            ): (
+                                <input className='rounded-md p-2 mx-2 w-80' name='end_date' type='date' onChange={(ev) => setProject({...project, end_date: ev.target.value})}/>
+                            )}
                         </div>
                         <div className='flex items-center justify-between my-2'>
                             <label htmlFor='duration'>Duration</label>

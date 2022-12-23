@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import {ArrowLeftOnRectangleIcon, BellIcon} from "@heroicons/react/24/outline";
 import axiosClient from "../axios-client.js";
 
-export default function AuthorizedLayout(){
+export default function AuthorizedLayout() {
     const {user, token, notification, setUser, setToken} = useStateContext();
     const [show, setShow] = useState(false);
     const onLogout = (ev) => {
@@ -23,7 +23,7 @@ export default function AuthorizedLayout(){
             })
     }, [])
 
-    if(!token){
+    if (!token) {
         return (
             <Navigate to='/login'/>
         )
@@ -73,24 +73,21 @@ export default function AuthorizedLayout(){
                     {/* Sidebar ends */}
                     <div className="w-full">
                         {/* Navigation starts */}
-                        <nav className="h-16 flex items-center lg:items-stretch justify-end lg:justify-between bg-white shadow relative z-10">
+                        <nav
+                            className="h-16 flex items-center lg:items-stretch justify-end lg:justify-between bg-white shadow relative z-10">
                             <div className="hidden lg:flex w-full pr-6">
                                 <div className="w-1/2 h-full hidden lg:flex items-center pl-6 pr-24">
-                                {/*  To make sure that header icons are aligned to the right  */}
+                                    {/*  To make sure that header icons are aligned to the right  */}
                                 </div>
                                 <div className="w-1/2 hidden lg:flex">
                                     <div className="w-full flex items-center pl-8 justify-end">
-                                        <div className="h-full w-20 flex items-center justify-center border-r border-l">
-                                            <div className="relative cursor-pointer text-gray-600">
-                                                <BellIcon className='h-9 w-9'/>
-                                                <div className="w-2 h-2 rounded-full bg-red-400 border border-white absolute inset-0 mt-1 mr-1 m-auto" />
-                                            </div>
-                                        </div>
-                                        <div className="h-full flex items-center justify-center border-r mr-4 cursor-pointer text-gray-600">
+                                        <div
+                                            className="h-full flex items-center justify-center border-l border-r mr-4 text-gray-600">
                                             <p className='px-2 font-bold'>{user.name}</p>
                                         </div>
                                         <div className="flex items-center relative cursor-pointer">
-                                            <div className="rounded-full flex items-center justify-center text-gray-600" onClick={onLogout}>
+                                            <div className="rounded-full flex items-center justify-center text-gray-600"
+                                                 onClick={onLogout}>
                                                 <ArrowLeftOnRectangleIcon className='h-9 w-9'/>
                                                 <p>Log Out</p>
                                             </div>
@@ -109,12 +106,7 @@ export default function AuthorizedLayout(){
                         <div className="container mx-auto py-10 h-64 md:w-4/5 w-11/12 px-6">
                             {/* Remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border */}
                             <div className="w-full h-full rounded">
-                                {user.is_approved === 1 && (
-                                    <Outlet/>
-                                )}
-                                {user.is_approved === 0 && (
-                                    <h1 className='font-bold text-xl font-gray-300'>Your account is not approved yet. Please be patient as the administrator reviews your account information</h1>
-                                )}
+                                <Outlet/>
                             </div>
                         </div>
                     </div>

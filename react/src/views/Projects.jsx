@@ -9,7 +9,7 @@ export default function Projects(){
     const [projects, setProjects] = useState([]);
     const [paginate, setPaginate] = useState(1);
     const [loading, setLoading] = useState(false);
-    const {user} = useStateContext();
+    const {user, setNotification} = useStateContext();
 
     useEffect(() => {
         getProjects();
@@ -32,6 +32,17 @@ export default function Projects(){
             })
             .catch(() => {
                 setLoading(false);
+            })
+    }
+
+    const toDelete = (project) => {
+        if(!window.confirm('Are you sure you want to delete this project?')){
+            return
+        }
+        axiosClient.delete(`/projects/${project.id}`)
+            .then(() => {
+                setNotification("Project has been successfully deleted");
+                getProjects();
             })
     }
 
